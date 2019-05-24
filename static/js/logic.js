@@ -50,6 +50,35 @@ var layers = {
   }).addTo(map);
 }
 
+// Initialize an object containing circles for each layer group
+var circles = {
+  "0-1": L."0-1".circleMarkers({
+    radius: (type == "Earthquakes"), 
+    color: "white",
+    stroke: "green",
+  }),
+  "1-2": "1-2".circleMarkers({
+    radius: (type == "Earthquakes"),
+    color: "white",
+    stroke: "yellow",
+  }),
+  "2-3": "2-3".circleMarkers({
+    radius: (type == "Earthquakes"),
+    color: "white",
+    stroke: "#FF906A"
+  }),
+  "3-4": "3-4".circleMarkers({
+    radius: (type == "Earthquakes"), 
+    color: "white",
+    stroke: "orange",
+  }),
+  "4-5": L."4-5".circleMarkers({
+    radius: (type == "Earthquakes"),
+    color: "white",
+    stroke: "red",
+  })
+};
+
 // Create the createMarkers function
 function createMarkers(response) {
 
@@ -74,5 +103,5 @@ function createMarkers(response) {
   createMap(L.layerGroup(earthquakeMarkers));
 }
 
-// Perform an API call to the USGS API to get earthquake information. Call createMarkers when complete
-d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson", createMarkers);
+// Perform an API call to the USGS API to get earthquake information. Call earthquakeMarkers when complete
+d3.json("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson", earthquakeMarkers);
